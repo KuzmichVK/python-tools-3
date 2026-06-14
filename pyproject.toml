@@ -1,5 +1,5 @@
 [project]
-name = "python-tools-3"
+name = "project"
 version = "0.1.0"
 requires-python = ">=3.12"
 dependencies = []
@@ -9,13 +9,16 @@ line-length = 79
 target-version = "py312"
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "UP", "B", "ANN"]  # ошибки, импорты, модернизация, багопаттерны, аннотации типов
+select = ["E", "W", "F", "I", "UP", "B", "ANN", "D"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "pep257"   # "google" | "numpy" | "pep257"
 
 [tool.ruff.format]
 quote-style = "double"
 
 [dependency-groups]
-dev = [
-    "flake8-docstrings>=1.7.0",
-    "mypy>=2.1.0",
-]
+dev = ["pytest", "ruff", "mypy"]
+
+[tool.mypy]
+python_version = "3.12"
